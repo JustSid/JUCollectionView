@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E9C89B9613F0B18100E257B6 /* JUCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C89B9513F0B18100E257B6 /* JUCollectionViewCell.m */; };
+		E9C89B9F13F0E7EE00E257B6 /* JUCollectionView+Selection.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C89B9E13F0E7EE00E257B6 /* JUCollectionView+Selection.m */; };
+		E9E3A32913F0A30000125FAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E3A32813F0A2FF00125FAA /* Cocoa.framework */; };
+		E9E3A33513F0A30000125FAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E3A33413F0A30000125FAA /* main.m */; };
+		E9E3A33C13F0A30000125FAA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E3A33B13F0A30000125FAA /* AppDelegate.m */; };
+		E9E3A33F13F0A30000125FAA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E3A33D13F0A30000125FAA /* MainMenu.xib */; };
+		E9E3A34F13F0A39900125FAA /* JUCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E3A34E13F0A39900125FAA /* JUCollectionView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E9C89B9413F0B18100E257B6 /* JUCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUCollectionViewCell.h; sourceTree = "<group>"; };
+		E9C89B9513F0B18100E257B6 /* JUCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUCollectionViewCell.m; sourceTree = "<group>"; };
+		E9C89B9C13F0E77900E257B6 /* JUCollectionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUCollectionViewDelegate.h; sourceTree = "<group>"; };
+		E9C89B9D13F0E7EE00E257B6 /* JUCollectionView+Selection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JUCollectionView+Selection.h"; sourceTree = "<group>"; };
+		E9C89B9E13F0E7EE00E257B6 /* JUCollectionView+Selection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JUCollectionView+Selection.m"; sourceTree = "<group>"; };
+		E9E3A32413F0A2FF00125FAA /* JUCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JUCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9E3A32813F0A2FF00125FAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E9E3A32B13F0A30000125FAA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E9E3A32C13F0A30000125FAA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E9E3A32D13F0A30000125FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E9E3A33013F0A30000125FAA /* JUCollectionView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JUCollectionView-Info.plist"; sourceTree = "<group>"; };
+		E9E3A33413F0A30000125FAA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E9E3A33613F0A30000125FAA /* JUCollectionView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JUCollectionView-Prefix.pch"; sourceTree = "<group>"; };
+		E9E3A33A13F0A30000125FAA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E9E3A33B13F0A30000125FAA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E9E3A33E13F0A30000125FAA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E9E3A34D13F0A39900125FAA /* JUCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUCollectionView.h; sourceTree = "<group>"; };
+		E9E3A34E13F0A39900125FAA /* JUCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUCollectionView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9E3A32113F0A2FF00125FAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E3A32913F0A30000125FAA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E9E3A31913F0A2FF00125FAA = {
+			isa = PBXGroup;
+			children = (
+				E9E3A34C13F0A39900125FAA /* Source */,
+				E9E3A32E13F0A30000125FAA /* JUCollectionView */,
+				E9E3A32713F0A2FF00125FAA /* Frameworks */,
+				E9E3A32513F0A2FF00125FAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9E3A32513F0A2FF00125FAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9E3A32413F0A2FF00125FAA /* JUCollectionView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9E3A32713F0A2FF00125FAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9E3A32813F0A2FF00125FAA /* Cocoa.framework */,
+				E9E3A32A13F0A30000125FAA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9E3A32A13F0A30000125FAA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9E3A32B13F0A30000125FAA /* AppKit.framework */,
+				E9E3A32C13F0A30000125FAA /* CoreData.framework */,
+				E9E3A32D13F0A30000125FAA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E9E3A32E13F0A30000125FAA /* JUCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E9E3A33A13F0A30000125FAA /* AppDelegate.h */,
+				E9E3A33B13F0A30000125FAA /* AppDelegate.m */,
+				E9E3A33D13F0A30000125FAA /* MainMenu.xib */,
+				E9E3A32F13F0A30000125FAA /* Supporting Files */,
+			);
+			path = JUCollectionView;
+			sourceTree = "<group>";
+		};
+		E9E3A32F13F0A30000125FAA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9E3A33013F0A30000125FAA /* JUCollectionView-Info.plist */,
+				E9E3A33613F0A30000125FAA /* JUCollectionView-Prefix.pch */,
+				E9E3A33413F0A30000125FAA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9E3A34C13F0A39900125FAA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E9E3A34D13F0A39900125FAA /* JUCollectionView.h */,
+				E9E3A34E13F0A39900125FAA /* JUCollectionView.m */,
+				E9C89B9D13F0E7EE00E257B6 /* JUCollectionView+Selection.h */,
+				E9C89B9E13F0E7EE00E257B6 /* JUCollectionView+Selection.m */,
+				E9C89B9413F0B18100E257B6 /* JUCollectionViewCell.h */,
+				E9C89B9513F0B18100E257B6 /* JUCollectionViewCell.m */,
+				E9C89B9C13F0E77900E257B6 /* JUCollectionViewDelegate.h */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9E3A32313F0A2FF00125FAA /* JUCollectionView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9E3A34213F0A30000125FAA /* Build configuration list for PBXNativeTarget "JUCollectionView" */;
+			buildPhases = (
+				E9E3A32013F0A2FF00125FAA /* Sources */,
+				E9E3A32113F0A2FF00125FAA /* Frameworks */,
+				E9E3A32213F0A2FF00125FAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JUCollectionView;
+			productName = JUCollectionView;
+			productReference = E9E3A32413F0A2FF00125FAA /* JUCollectionView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9E3A31B13F0A2FF00125FAA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = E9E3A31E13F0A2FF00125FAA /* Build configuration list for PBXProject "JUCollectionView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E9E3A31913F0A2FF00125FAA;
+			productRefGroup = E9E3A32513F0A2FF00125FAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9E3A32313F0A2FF00125FAA /* JUCollectionView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9E3A32213F0A2FF00125FAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E3A33F13F0A30000125FAA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9E3A32013F0A2FF00125FAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E3A33513F0A30000125FAA /* main.m in Sources */,
+				E9E3A33C13F0A30000125FAA /* AppDelegate.m in Sources */,
+				E9E3A34F13F0A39900125FAA /* JUCollectionView.m in Sources */,
+				E9C89B9613F0B18100E257B6 /* JUCollectionViewCell.m in Sources */,
+				E9C89B9F13F0E7EE00E257B6 /* JUCollectionView+Selection.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E9E3A33D13F0A30000125FAA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9E3A33E13F0A30000125FAA /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9E3A34013F0A30000125FAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E9E3A34113F0A30000125FAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E9E3A34313F0A30000125FAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JUCollectionView/JUCollectionView-Prefix.pch";
+				INFOPLIST_FILE = "JUCollectionView/JUCollectionView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E9E3A34413F0A30000125FAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JUCollectionView/JUCollectionView-Prefix.pch";
+				INFOPLIST_FILE = "JUCollectionView/JUCollectionView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9E3A31E13F0A2FF00125FAA /* Build configuration list for PBXProject "JUCollectionView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9E3A34013F0A30000125FAA /* Debug */,
+				E9E3A34113F0A30000125FAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9E3A34213F0A30000125FAA /* Build configuration list for PBXNativeTarget "JUCollectionView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9E3A34313F0A30000125FAA /* Debug */,
+				E9E3A34413F0A30000125FAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9E3A31B13F0A2FF00125FAA /* Project object */;
+}
