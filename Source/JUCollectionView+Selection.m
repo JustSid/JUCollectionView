@@ -47,6 +47,72 @@
     index = [self indexOfCellAtPoint:mousePoint];
     
     [self selectCellAtIndex:index];
+    
+    if(unselectOnMouseUp)
+        [self deselectAllCells];
+    
+    lastSelection = [NSDate timeIntervalSinceReferenceDate];
+}
+
+- (void)keyDown:(NSEvent *)event
+{
+    if([[self selection] count] == 0)
+        return;
+    
+    NSUInteger index = [[self selection] firstIndex];
+    BOOL isSelectionEvent = NO;
+    
+    switch([event keyCode])
+    {
+        case 123: // Left
+            index --;
+            isSelectionEvent = YES;
+            break;
+            
+        case 124: // Right
+            index ++;
+            isSelectionEvent = YES;
+            break;
+            
+        case 125: // Down
+        {
+            NSPoint point = [self positionOfCellAtIndex:index];
+            point.y += 1;
+            
+            index = [self indexOfCellAtPosition:point];
+            isSelectionEvent = YES;
+            break;
+        }
+            
+        case 126: // Up
+        {
+            NSPoint point = [self positionOfCellAtIndex:index];
+            point.y -= 1;
+            
+            index = [self indexOfCellAtPosition:point];
+            isSelectionEvent = YES;
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    if(isSelectionEvent)
+    {
+        [self deselectAllCells];
+        [self selectCellAtIndex:index];
+        
+        return;
+    }
+    
+    BOOL delegateImplements = [delegate respondsToSelector:@selector(collectionView:keyEvent:forCellAtIndex:)];
+    if(!delegateImplements)
+        return;
+    
+    [[self selection] enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop){
+        [delegate collectionView:self keyEvent:event forCellAtIndex:index];
+    }];
 }
 
 @end

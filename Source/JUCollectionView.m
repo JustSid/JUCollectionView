@@ -28,7 +28,7 @@
 @implementation JUCollectionView
 @synthesize cellSize, desiredNumberOfColumns, desiredNumberOfRows;
 @synthesize dataSource, delegate;
-@synthesize allowsSelection, allowsMultipleSelection;
+@synthesize unselectOnMouseUp, allowsSelection, allowsMultipleSelection;
 
 #pragma mark -
 #pragma mark Selection
@@ -64,20 +64,32 @@
         [selection addIndex:[indexSet firstIndex]];
     }
     
-    BOOL delegateImplements = [delegate respondsToSelector:@selector(collectionView:didSelectCellAtIndex:)];
+    BOOL delegateSingleClick = [delegate respondsToSelector:@selector(collectionView:didSelectCellAtIndex:)];
+    BOOL delegateDoubleClick = [delegate respondsToSelector:@selector(collectionView:didDoubleClickedCellAtIndex:)];
     
     [selection enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
         JUCollectionViewCell *cell = [visibleCells objectForKey:[NSNumber numberWithUnsignedInteger:index]];
         [cell setSelected:YES];
         
-        if(delegateImplements && ![oldSelection containsIndex:index])
+        if(delegateSingleClick && ![oldSelection containsIndex:index])
         {
             [delegate collectionView:self didSelectCellAtIndex:index];
+        }
+        else if(delegateDoubleClick && [oldSelection containsIndex:index])
+        {
+            if([NSDate timeIntervalSinceReferenceDate] - lastSelection <= [NSEvent doubleClickInterval])
+            {
+                if([NSDate timeIntervalSinceReferenceDate] - lastDoubleClick <= [NSEvent doubleClickInterval])
+                    return;
+                
+                [delegate collectionView:self didDoubleClickedCellAtIndex:index];
+                lastDoubleClick = [NSDate timeIntervalSinceReferenceDate];
+            }
         }
     }];
 }
 
-- (void)deselctCellAtIndex:(NSUInteger)index
+- (void)deselectCellAtIndex:(NSUInteger)index
 {
     if(index == NSNotFound)
         return;
@@ -108,15 +120,36 @@
 }
 
 - (NSUInteger)indexOfCellAtPoint:(NSPoint)point
-{    
-    point = NSMakePoint(floor(point.x / cellSize.width), floor(point.y / cellSize.height));
+{
+    NSSize boundsSize = [self bounds].size;
+    if(point.x < 0.0 || point.y < 0.0 || point.x >= boundsSize.width || point.y >= boundsSize.height)
+        return NSNotFound;
+    
+    point = NSMakePoint(floor(point.x / cellSize.width), floor(point.y / cellSize.height));    
     NSUInteger index = (point.y * numberOfColumns) + point.x;
+    
+    return index;
+}
+
+- (NSUInteger)indexOfCellAtPosition:(NSPoint)point
+{
+    if(point.x < 0.0 || point.y < 0.0 || point.x >= numberOfColumns || point.y >= numberOfRows)
+        return NSNotFound;
+    
+    point = NSMakePoint(floor(point.x), floor(point.y));    
+    NSUInteger index = (point.y * numberOfColumns) + point.x;
+    
+    if(index >= numberOfCells)
+        return NSNotFound;
     
     return index;
 }
 
 - (NSPoint)positionOfCellAtIndex:(NSUInteger)index
 {
+    if(index >= numberOfCells || index == NSNotFound)
+        return NSZeroPoint;
+    
     NSUInteger x = index % numberOfColumns;
     NSUInteger y = (index - x) / numberOfColumns;
     
@@ -125,6 +158,9 @@
 
 - (NSRect)rectForCellAtIndex:(NSInteger)index
 {
+    if(index >= numberOfCells || index == NSNotFound)
+        return NSZeroRect;
+    
     NSUInteger x = index % numberOfColumns;
     NSUInteger y = (index - x) / numberOfColumns;
     
@@ -254,11 +290,18 @@
 
 - (void)reloadData
 {
+    if(updatingData)
+    {
+        calledReloadData = YES;
+        return;
+    }
+    
     for(NSView *view in [visibleCells allValues])
         [view removeFromSuperview];
     
     [visibleCells removeAllObjects];
     [reusableCellQueues removeAllObjects];
+    [selection removeAllIndexes];
     
     numberOfCells = [dataSource numberOfCellsInCollectionView:self];    
     
@@ -298,6 +341,9 @@
 
 - (void)updateLayout
 {
+    if(updatingData)
+        return;
+    
     NSRect frame = [self frame];
     CGFloat width, height;
     
@@ -314,7 +360,7 @@
     }
     
     
-    if(desiredNumberOfRows == NSUIntegerMax)
+    if(desiredNumberOfRows == NSUIntegerMax && numberOfColumns > 0)
     {
         numberOfRows = MAX(1, (numberOfCells / numberOfColumns) + 1);
         height = numberOfRows * cellSize.height; 
@@ -361,6 +407,30 @@
 {
     desiredNumberOfRows = newDesiredNumberOfRows;
     [self updateLayout];
+}
+
+- (void)beginChanges
+{
+    if(updatingData)
+        return;
+    
+    updatingData = YES;
+}
+
+- (void)commitChanges
+{
+    updatingData = NO;
+    
+    if(calledReloadData)
+    {
+        [self reloadData];
+    }
+    else
+    {
+        [self updateLayout];
+    }
+    
+    calledReloadData = NO;
 }
 
 #pragma mark -

@@ -38,7 +38,7 @@
 
 - (void)collectionView:(JUCollectionView *)_collectionView didSelectCellAtIndex:(NSUInteger)index
 {
-    NSLog(@"Selected cell at index: %ui", (unsigned int)index);
+    NSLog(@"Selected cell at index: %u", (unsigned int)index);
     NSLog(@"Position: %@", NSStringFromPoint([_collectionView positionOfCellAtIndex:index]));
 }
 

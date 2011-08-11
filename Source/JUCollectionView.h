@@ -42,6 +42,10 @@
     NSMutableDictionary *visibleCells;
     
     NSMutableIndexSet *selection;
+    NSTimeInterval lastSelection, lastDoubleClick;
+    
+    BOOL unselectOnMouseUp;
+    BOOL updatingData, calledReloadData;
 }
 
 /**
@@ -57,7 +61,6 @@
  * @remark If you set desiredNumberOfRows to a fixed value, the collection view might not show all cells but only those who fit into the desired rows.
  **/
 @property (nonatomic, assign) NSUInteger desiredNumberOfRows;
-
 /**
  * The currently selected cells.
  **/
@@ -80,6 +83,10 @@
  * YES if the collection view should allow the selection of multiple cells at the same time, otherwise NO. The default value is NO.
  **/
 @property (nonatomic, assign) BOOL allowsMultipleSelection;
+/**
+ * YES if the collection view should deselect the currently selected cell when the mouse button is released. The default value is NO.
+ **/
+@property (nonatomic, assign) BOOL unselectOnMouseUp;
 
 /**
  * Returns a queued cell or nil if no cell is currently in the queue. Use this if possible instead of creating new JUCollectionViewCell instances. 
@@ -108,7 +115,7 @@
 /**
  * Deselects the cell at the given index.
  **/
-- (void)deselctCellAtIndex:(NSUInteger)index;
+- (void)deselectCellAtIndex:(NSUInteger)index;
 /**
  * Deselcts all cells of the index set.
  **/
@@ -120,9 +127,12 @@
 
 /**
  * Returns the index of the cell at the given point.
- * @remark The method also returns indices outside of the collection views bound!
  **/
 - (NSUInteger)indexOfCellAtPoint:(NSPoint)point;
+/**
+ * Returns the index of the cell at the given position.
+ **/
+- (NSUInteger)indexOfCellAtPosition:(NSPoint)point;
 /**
  * Returns the position of the cell at the given index. For example the top left cell has the point 0|0 while the one on the right side of it has 1|0 etc.
  **/
@@ -140,5 +150,16 @@
  * Returns the currently visible index range.
  **/
 - (NSRange)visibleRange;
+
+/**
+ * Begins a block of changes. The collection view will only update its data and appereance when you call commitChanges.
+ * @remark A call to reloadData will also be delayed until a commitChanges call.
+ **/
+- (void)beginChanges;
+/**
+ * Updates the collection views data and appereance according to the previously made changes.
+ * @remark Use this and beginChanges if you want to update multiple properties of the collection view in one batch call to save performance.
+ **/
+- (void)commitChanges;
 
 @end

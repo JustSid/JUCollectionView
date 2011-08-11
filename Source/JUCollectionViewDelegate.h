@@ -44,8 +44,17 @@
  **/
 - (void)collectionView:(JUCollectionView *)collectionView didSelectCellAtIndex:(NSUInteger)index;
 /**
+ * Invoked when the user double clicked on the given cell.
+ **/
+- (void)collectionView:(JUCollectionView *)collectionView didDoubleClickedCellAtIndex:(NSUInteger)index;
+/**
  * Invoked when the cell at the given index was deselected.
  **/
 - (void)collectionView:(JUCollectionView *)collectionView didDeselectCellAtIndex:(NSUInteger)index;
+/**
+ * Invoked when there was an unhandled key event. The method will be invoked for every selected cell.
+ * @remark Currently handled are the cursor keys.
+ **/
+- (void)collectionView:(JUCollectionView *)collectionView keyEvent:(NSEvent *)event forCellAtIndex:(NSUInteger)index;
 
 @end

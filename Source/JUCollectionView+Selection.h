@@ -18,12 +18,14 @@
 #import "JUCollectionView.h"
 
 /**
- * Category to allow selection of cells with the mouse. Currently no multiple selection supported.
+ * Category to allow selection of cells with the mouse and keyboard. Currently no multiple selection supported.
  **/
 @interface JUCollectionView (JUCollectionView_Selection)
 
 - (void)mouseDown:(NSEvent *)event;
 - (void)mouseDragged:(NSEvent *)event;
 - (void)mouseUp:(NSEvent *)event;
+
+- (void)keyDown:(NSEvent *)event;
 
 @end

@@ -56,7 +56,10 @@
     if(selected && drawSelection)
     {
         [selectionColor set];
-        [[NSBezierPath bezierPathWithRoundedRect:NSInsetRect([self bounds], 2.0, 2.0) xRadius:8.0 yRadius:8.0] fill];
+        
+        NSBezierPath *path = [NSBezierPath bezierPathWithRect:[self bounds]];
+        [path setLineWidth:4.0];
+        [path stroke];
     }
 }
 
@@ -90,7 +93,7 @@
     if((self = [super initWithFrame:NSZeroRect]))
     {
         cellIdentifier  = [identifier retain];
-        selectionColor  = [[NSColor colorWithCalibratedRed:0.706 green:0.835 blue:0.980 alpha:0.810] retain];
+        selectionColor  = [[NSColor blackColor] retain];
         drawSelection   = YES;
     }
     
