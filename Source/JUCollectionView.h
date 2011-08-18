@@ -69,11 +69,11 @@
 /**
  * The data source of the collection view.
  **/
-@property (nonatomic, retain) IBOutlet id <JUCollectionViewDataSource> dataSource;
+@property (nonatomic, assign) IBOutlet id <JUCollectionViewDataSource> dataSource;
 /**
  * The delegate of the collection view.
  **/
-@property (nonatomic, retain) IBOutlet id <JUCollectionViewDelegate> delegate;
+@property (nonatomic, assign) IBOutlet id <JUCollectionViewDelegate> delegate;
 
 /**
  * YES if the collection view should allow selection, otherwise NO. The default value is YES.
