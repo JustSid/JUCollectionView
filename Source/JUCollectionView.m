@@ -382,7 +382,7 @@
     
     if(desiredNumberOfRows == NSUIntegerMax && numberOfColumns > 0)
     {
-        numberOfRows = MAX(1, (numberOfCells / numberOfColumns) + 1);
+        numberOfRows = MAX(1, ceil((float)(numberOfCells / numberOfColumns)));
         height = numberOfRows * cellSize.height; 
     }
     else
@@ -469,6 +469,13 @@
 	lastHoverCellIndex = -1;
     
     cellSize = NSMakeSize(32.0, 32.0);
+	
+	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:[self frame] 
+														options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect)
+														  owner:self
+													   userInfo:nil];
+	[self addTrackingArea:area];
+	[area release];	
     
     NSClipView *clipView = [[self enclosingScrollView] contentView];
     [clipView setPostsBoundsChangedNotifications:YES];
