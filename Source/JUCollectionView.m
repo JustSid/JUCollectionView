@@ -466,7 +466,7 @@
     
     selection = [[NSMutableIndexSet alloc] init];
     allowsSelection = YES;
-	lastHoverCellIndex = -1;
+	lastHoverCellIndex = NSUIntegerMax;
     
     cellSize = NSMakeSize(32.0, 32.0);
 	
