@@ -391,14 +391,22 @@
         height = numberOfRows * cellSize.height; 
     }
     
-    
     frame.size.width  = width;
     frame.size.height = height;
     
-    
-    
     // Update the frame and then all cells
     [super setFrame:frame];
+	
+	// Reset tracking area
+	for (NSTrackingArea *area in [self trackingAreas])
+		[self removeTrackingArea:area];
+	
+	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:frame
+														options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways | NSTrackingInVisibleRect)
+														  owner:self
+													   userInfo:nil];
+	[self addTrackingArea:area];
+	[area release];		
     
     [self reorderCellsAnimated:YES];
     [self removeInvisibleCells];
@@ -470,13 +478,6 @@
     
     cellSize = NSMakeSize(32.0, 32.0);
 	
-	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:[self frame] 
-														options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect)
-														  owner:self
-													   userInfo:nil];
-	[self addTrackingArea:area];
-	[area release];	
-    
     NSClipView *clipView = [[self enclosingScrollView] contentView];
     [clipView setPostsBoundsChangedNotifications:YES];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewDidScroll:) name:NSViewBoundsDidChangeNotification object:clipView];
