@@ -119,6 +119,26 @@
     [self deselectCellsAtIndexes:selectionCopy];
 }
 
+- (void)hoverOverCellAtIndex:(NSUInteger)index
+{
+	if (lastHoverCellIndex != index)
+	{
+		// un-hover the previous cell
+		[self hoverOutOfCellAtIndex:lastHoverCellIndex];
+		
+		// hover over current cell
+		JUCollectionViewCell *cell = [visibleCells objectForKey:[NSNumber numberWithUnsignedInteger:index]];
+		[cell setHovering:YES];
+		lastHoverCellIndex = index;
+	}
+}
+
+- (void)hoverOutOfCellAtIndex:(NSUInteger)index
+{
+	JUCollectionViewCell *cell = [visibleCells objectForKey:[NSNumber numberWithUnsignedInteger:index]];
+	[cell setHovering:NO];
+}
+
 - (NSUInteger)indexOfCellAtPoint:(NSPoint)point
 {
     NSSize boundsSize = [self bounds].size;
@@ -446,6 +466,7 @@
     
     selection = [[NSMutableIndexSet alloc] init];
     allowsSelection = YES;
+	lastHoverCellIndex = -1;
     
     cellSize = NSMakeSize(32.0, 32.0);
     

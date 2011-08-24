@@ -37,6 +37,7 @@
     NSUInteger numberOfColumns, numberOfRows;
     NSUInteger numberOfCells;
     NSSize cellSize;
+	NSUInteger lastHoverCellIndex;
     
     NSMutableDictionary *reusableCellQueues;
     NSMutableDictionary *visibleCells;
@@ -124,6 +125,15 @@
  * Deselects all previously selected cells.
  **/
 - (void)deselectAllCells;
+
+/**
+ * The mouse is hovering over the given cell.
+ **/
+- (void)hoverOverCellAtIndex:(NSUInteger)index;
+/**
+ * The mouse was hovering over the given cell and is now out of the cell area.
+ **/
+- (void)hoverOutOfCellAtIndex:(NSUInteger)index;
 
 /**
  * Returns the index of the cell at the given point.

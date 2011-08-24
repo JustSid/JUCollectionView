@@ -26,12 +26,13 @@
 @protected
     NSImage *image;
     NSColor *selectionColor;
+    BOOL selected;
+	BOOL hovering;
     
 @private
     NSInteger index;
     NSString *cellIdentifier;
     
-    BOOL selected;
     BOOL drawSelection;
 }
 
@@ -57,6 +58,11 @@
  * YES if the cell is selected, otherwise NO.
  **/
 @property (nonatomic, assign, getter=isSelected) BOOL selected;
+
+/**
+ * YES if the mouse is hovering over cell, otherwise NO.
+ **/
+@property (nonatomic, assign, getter=isHovering) BOOL hovering;
 
 /**
  * Invoked when the cell is dequeued from a collection view. This will reset all settings to default.

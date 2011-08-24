@@ -40,6 +40,15 @@
     [self autoscroll:event];
 }
 
+- (void)mouseMoved:(NSEvent *)event
+{
+	NSUInteger index;
+    NSPoint mousePoint = [self convertPoint:[event locationInWindow] fromView:nil];
+    index = [self indexOfCellAtPoint:mousePoint];
+
+	[self hoverOverCellAtIndex:index];
+}
+
 - (void)mouseUp:(NSEvent *)event
 {
     NSUInteger index;

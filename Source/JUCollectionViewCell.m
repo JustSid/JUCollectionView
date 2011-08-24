@@ -24,6 +24,7 @@
 @implementation JUCollectionViewCell
 @synthesize index, cellIdentifier, image;
 @synthesize selectionColor, selected, drawSelection;
+@synthesize hovering;
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -78,12 +79,17 @@
     [self setNeedsDisplay:YES];
 }
 
-
+- (void)setHovering:(BOOL)state
+{
+	hovering = state;
+	[self setNeedsDisplay:YES];
+}
 
 - (void)prepareForReuse
 {
     selected = NO;
     drawSelection = YES;
+	hovering = NO;
     self.image = nil;
 }
 
