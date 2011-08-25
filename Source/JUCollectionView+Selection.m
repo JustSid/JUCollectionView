@@ -49,6 +49,11 @@
 	[self hoverOverCellAtIndex:index];
 }
 
+- (void)mouseExited:(NSEvent *)theEvent
+{
+	[self hoverOutOfLastCell];
+}
+
 - (void)mouseUp:(NSEvent *)event
 {
     NSUInteger index;

@@ -124,12 +124,21 @@
 	if (lastHoverCellIndex != index)
 	{
 		// un-hover the previous cell
-		[self hoverOutOfCellAtIndex:lastHoverCellIndex];
+		[self hoverOutOfLastCell];
 		
 		// hover over current cell
 		JUCollectionViewCell *cell = [visibleCells objectForKey:[NSNumber numberWithUnsignedInteger:index]];
 		[cell setHovering:YES];
 		lastHoverCellIndex = index;
+	}
+}
+
+- (void)hoverOutOfLastCell
+{
+	if (lastHoverCellIndex != NSUIntegerMax)
+	{
+		[self hoverOutOfCellAtIndex:lastHoverCellIndex];
+		lastHoverCellIndex = NSUIntegerMax;
 	}
 }
 
@@ -382,7 +391,7 @@
     
     if(desiredNumberOfRows == NSUIntegerMax && numberOfColumns > 0)
     {
-        numberOfRows = MAX(1, ceil((float)(numberOfCells / numberOfColumns)));
+        numberOfRows = MAX(1, ceil(((float)numberOfCells / numberOfColumns)));
         height = numberOfRows * cellSize.height; 
     }
     else

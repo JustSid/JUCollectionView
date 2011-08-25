@@ -134,6 +134,10 @@
  * The mouse was hovering over the given cell and is now out of the cell area.
  **/
 - (void)hoverOutOfCellAtIndex:(NSUInteger)index;
+/**
+ * Hover out of the most recent cell that the mouse was hovering over.
+ **/
+- (void)hoverOutOfLastCell;
 
 /**
  * Returns the index of the cell at the given point.
