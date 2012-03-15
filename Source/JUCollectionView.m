@@ -370,7 +370,7 @@
     // Calculate new boundaries for the view...
     if(desiredNumberOfColumns == NSUIntegerMax)
     {
-        numberOfColumns = MAX(1, floor(frame.size.width / cellSize.width));
+        numberOfColumns = floorf((float)frame.size.width / cellSize.width);
         width = frame.size.width;
     }
     else
@@ -382,7 +382,7 @@
     
     if(desiredNumberOfRows == NSUIntegerMax && numberOfColumns > 0)
     {
-        numberOfRows = MAX(1, ceil((float)(numberOfCells / numberOfColumns)));
+        numberOfRows = ceilf((float)numberOfCells / numberOfColumns);
         height = numberOfRows * cellSize.height; 
     }
     else
