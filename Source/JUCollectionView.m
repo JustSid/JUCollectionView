@@ -139,6 +139,12 @@
 	[cell setHovering:NO];
 }
 
+- (void)hoverOutOfLastCell
+{
+    JUCollectionViewCell *cell = [visibleCells objectForKey:[NSNumber numberWithUnsignedInteger:lastHoverCellIndex]];
+    [cell setHovering:NO];
+}
+
 - (NSUInteger)indexOfCellAtPoint:(NSPoint)point
 {
     NSSize boundsSize = [self bounds].size;
