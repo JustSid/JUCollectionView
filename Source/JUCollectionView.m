@@ -124,21 +124,12 @@
 	if (lastHoverCellIndex != index)
 	{
 		// un-hover the previous cell
-		[self hoverOutOfLastCell];
+		[self hoverOutOfCellAtIndex:lastHoverCellIndex];
 		
 		// hover over current cell
 		JUCollectionViewCell *cell = [visibleCells objectForKey:[NSNumber numberWithUnsignedInteger:index]];
 		[cell setHovering:YES];
 		lastHoverCellIndex = index;
-	}
-}
-
-- (void)hoverOutOfLastCell
-{
-	if (lastHoverCellIndex != NSUIntegerMax)
-	{
-		[self hoverOutOfCellAtIndex:lastHoverCellIndex];
-		lastHoverCellIndex = NSUIntegerMax;
 	}
 }
 
@@ -379,7 +370,7 @@
     // Calculate new boundaries for the view...
     if(desiredNumberOfColumns == NSUIntegerMax)
     {
-        numberOfColumns = MAX(1, floor(frame.size.width / cellSize.width));
+        numberOfColumns = floorf((float)frame.size.width / cellSize.width);
         width = frame.size.width;
     }
     else
@@ -391,7 +382,7 @@
     
     if(desiredNumberOfRows == NSUIntegerMax && numberOfColumns > 0)
     {
-        numberOfRows = MAX(1, ceil(((float)numberOfCells / numberOfColumns)));
+        numberOfRows = ceilf((float)numberOfCells / numberOfColumns);
         height = numberOfRows * cellSize.height; 
     }
     else
@@ -400,22 +391,14 @@
         height = numberOfRows * cellSize.height; 
     }
     
+    
     frame.size.width  = width;
     frame.size.height = height;
     
+    
+    
     // Update the frame and then all cells
     [super setFrame:frame];
-	
-	// Reset tracking area
-	for (NSTrackingArea *area in [self trackingAreas])
-		[self removeTrackingArea:area];
-	
-	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:frame
-														options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways | NSTrackingInVisibleRect)
-														  owner:self
-													   userInfo:nil];
-	[self addTrackingArea:area];
-	[area release];		
     
     [self reorderCellsAnimated:YES];
     [self removeInvisibleCells];
@@ -483,10 +466,17 @@
     
     selection = [[NSMutableIndexSet alloc] init];
     allowsSelection = YES;
-	lastHoverCellIndex = NSUIntegerMax;
+	lastHoverCellIndex = -1;
     
     cellSize = NSMakeSize(32.0, 32.0);
 	
+	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:[self frame] 
+														options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect)
+														  owner:self
+													   userInfo:nil];
+	[self addTrackingArea:area];
+	[area release];	
+    
     NSClipView *clipView = [[self enclosingScrollView] contentView];
     [clipView setPostsBoundsChangedNotifications:YES];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewDidScroll:) name:NSViewBoundsDidChangeNotification object:clipView];
