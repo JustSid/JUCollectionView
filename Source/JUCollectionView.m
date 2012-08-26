@@ -189,8 +189,9 @@
     
     NSUInteger x = index % numberOfColumns;
     NSUInteger y = (index - x) / numberOfColumns;
-    
-    return NSMakeRect(x * cellSize.width, y * cellSize.height, cellSize.width, cellSize.height);
+    CGFloat emptySpace = self.superview.frame.size.width-cellSize.width*numberOfColumns;
+    CGFloat padding = emptySpace*(x+1)/(double)(numberOfColumns+1);
+    return NSMakeRect(x * cellSize.width + padding, y * cellSize.height, cellSize.width, cellSize.height);
 }
 
 - (NSIndexSet *)indexesOfCellsInRect:(NSRect)rect
